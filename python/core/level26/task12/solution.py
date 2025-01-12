@@ -14,17 +14,17 @@ driver = webdriver.Chrome()
 
 try:
     # Открываем URL
-
+    driver.get(url)
 
     # Устанавливаем ожидание появления кнопки
-
+    btn = WebDriverWait(driver,wait_time).until(EC.presence_of_element_located((By.ID,button_id)))
 
     # Ожидаем появления кнопки с указанным ID и кликаем на нее
+    btn.click()
 
-
-except :
+except TimeoutException as e:
     # Выводим сообщение, если кнопка не появилась в течение заданного времени
-
+    print(f"Button is not appear duting waiting time. - {e}")
 
 finally:
     # Закрываем веб-драйвер
